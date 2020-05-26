@@ -1,0 +1,8 @@
+.error-message-div{
+  color: rgb(154, 9, 9);
+  font-size: 0.6rem;
+  font-weight: 600;
+  div::before{
+    content: '*';
+  }
+}

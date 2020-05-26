@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <h3>All Products</h3>
+
+    <div class="col-md-12">
+      <table class="table table-stripped">
+        <thead>
+          <tr>
+            <td>S.No</td>
+            <td>Image</td>
+            <td>Name</td>
+            <td>desccription</td>
+            <td>quantity</td>
+            <td>price</td>
+            <td>Actions</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>
+              <div class="product-img">
+                <img [src]="product.image" />
+              </div>
+            </td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description | slice: 0:100 }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.price | currency: "INR. " }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="edit(product.id)">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button class="btn btn-danger" (click)="delete(product.id)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

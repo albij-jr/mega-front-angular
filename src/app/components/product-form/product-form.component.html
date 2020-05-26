@@ -1,0 +1,176 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Add a Product</h3>
+    </div>
+    <div class="col-md-8 m-auto">
+      <form [formGroup]="productForm" (ngSubmit)="insertProduct()" class="form">
+        <div class="form-group row">
+          <label for="title" class="col-md-4 col-lg-3 col-xs-12"> title </label>
+          <div class="col-md-6 col-lg-5">
+            <input class="form-control" type="text" formControlName="title" />
+            <div
+              *ngIf="
+                productForm.get('title').invalid &&
+                (productForm.get('title').dirty ||
+                  productForm.get('title').touched)
+              "
+              class="error-message-div"
+            >
+              <div *ngIf="productForm.get('title')?.errors?.required">
+                Title is required.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="name" class="col-md-4 col-lg-3 col-xs-12">
+            Description
+          </label>
+          <div class="col-md-6 col-lg-5">
+            <textarea
+              class="form-control"
+              formControlName="description"
+            ></textarea>
+            <div
+              *ngIf="
+                productForm.get('description').invalid &&
+                (productForm.get('description').dirty ||
+                  productForm.get('description').touched)
+              "
+              class="error-message-div"
+            >
+              <div *ngIf="productForm.get('description')?.errors?.required">
+                description is required.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="name" class="col-md-4 col-lg-3 col-xs-12">
+            Short Description</label
+          >
+          <div class="col-md-6 col-lg-5">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="shortDesc"
+            />
+            <div
+              *ngIf="
+                productForm.get('shortDesc').invalid &&
+                (productForm.get('shortDesc').dirty ||
+                  productForm.get('shortDesc').touched)
+              "
+              class="error-message-div"
+            >
+              <div *ngIf="productForm.get('shortDesc')?.errors?.required">
+                Short Description is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="name" class="col-md-4 col-lg-3 col-xs-12"> Image</label>
+          <div class="col-md-6 col-lg-5">
+            <input class="form-control" type="text" formControlName="image" />
+            <div
+              *ngIf="
+                productForm.get('image').invalid &&
+                (productForm.get('image').dirty ||
+                  productForm.get('image').touched)
+              "
+              class="error-message-div"
+            >
+              <div *ngIf="productForm.get('image')?.errors?.required">
+                Image Url is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="name" class="col-md-4 col-lg-3 col-xs-12">
+            Category
+          </label>
+          <div class="col-md6 col-lg-5">
+            <select class="form-control" formControlName="catId">
+              <option
+                *ngFor="let category of categories"
+                [value]="category.id"
+                >{{ category.title }}</option
+              >
+            </select>
+            <div
+              *ngIf="
+                productForm.get('catId').invalid &&
+                (productForm.get('catId').dirty ||
+                  productForm.get('catId').touched)
+              "
+              class="error-message-div"
+            >
+              <div *ngIf="productForm.get('catId')?.errors?.required">
+                Category is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="name" class="col-md-4 col-lg-3 col-xs-12">
+            Quantity
+          </label>
+          <div class="col-md-6 col-lg-5">
+            <input
+              class="form-control"
+              type="number"
+              formControlName="quantity"
+            />
+            <div
+              *ngIf="
+                productForm.get('quantity').invalid &&
+                (productForm.get('quantity').dirty ||
+                  productForm.get('quantity').touched)
+              "
+              class="error-message-div"
+            >
+              <div *ngIf="productForm.get('quantity')?.errors?.required">
+                quantity is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="name" class="col-md-4 col-lg-3 col-xs-12"> Price </label>
+          <div class="col-md-6 col-lg-5">
+            <input class="form-control" type="number" formControlName="price" />
+            <div
+              *ngIf="
+                productForm.get('price').invalid &&
+                (productForm.get('price').dirty ||
+                  productForm.get('price').touched)
+              "
+              class="error-message-div"
+            >
+              <div *ngIf="productForm.get('price')?.errors?.required">
+                price is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="
+              (productForm.invalid || productForm.pending) &&
+              productForm.touched
+            "
+          >
+            Add Product
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
